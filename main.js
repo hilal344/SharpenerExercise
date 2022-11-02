@@ -1,40 +1,43 @@
-let listitems = document.querySelector('#items');
-console.log(listitems.parentElement);
-listitems.parentElement.style.backgroundColor='red'
+var form = document.getElementById('addForm');
+var itemList = document.getElementById('items');
+var filter = document.getElementById('filter');
 
-console.log(listitems.lastElementChild);
-listitems.lastElementChild.textContent = 'abdullah';
+form.addEventListener('submit', addItem);
 
-console.log(listitems.lastChild);
-listitems.lastChild.textContent='hilal';
+itemList.addEventListener('click', removeItem);
 
-// console.log(listitems.fir);
+function addItem(e){
+  e.preventDefault();
 
-console.log(listitems.firstElementChild);
+  
+  var newItem = document.getElementById('item').value;
 
-console.log(listitems.nextSibling);
+  var li = document.createElement('li');
 
-console.log(listitems.nextElementSibling);
+  li.className = 'list-group-item';
 
-
-console.log(listitems.previousSibling);
-
-console.log(listitems.previousElementSibling);
-listitems.previousElementSibling.textContent='redsea';
-
-var newDiv  = document.createElement('div');
-newDiv.className = 'hilal';
-newDiv.id = 'blackeye';
-newDiv.setAttribute('title', 'hello div');
-var newDivtxt = document.createTextNode('hello sharpner');
-newDiv.appendChild(newDivtxt);
-var container = document.querySelector('header .container');
-var h1 = document.querySelector('haeder h1');
-container.insertBefore(newDiv, h1);
-newDiv.style.color='red'
-console.log(newDiv);
+  li.appendChild(document.createTextNode(newItem));
 
 
-var item1 = document.getElementsByTagName('li');
-console.log(item1[0]);
-container.insertBefore(newDiv, item1[0]);
+  var deleteBtn = document.createElement('button');
+  deleteBtn.className = 'btn btn-danger btn-sm float-right delete';
+  deleteBtn.appendChild(document.createTextNode('X'));
+  li.appendChild(deleteBtn);
+  itemList.appendChild(li);
+
+  var deleteBtn2 = document.createElement('button');
+  deleteBtn2.className = 'btn btn-danger btn-sm float-right edit';
+  deleteBtn2.appendChild(document.createTextNode('E'));
+  li.appendChild(deleteBtn2);
+  itemList.appendChild(li);
+}
+
+function removeItem(e){
+  if(e.target.classList.contains('delete')){
+    if(confirm('Are You Sure?')){
+      var li = e.target.parentElement;
+      itemList.removeChild(li);
+    }
+  }
+}
+
