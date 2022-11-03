@@ -15,63 +15,30 @@
         <br>
         <LAbel>NAME</LAbel>
         <br>
-        <input type="text" id="name" placeholder="username" required>
+        <input type="text" id="name" placeholder="username" required >
         <br>
         <br>
         <label >Email</label>
         <br>
-        <input type="email" id="email" placeholder="email address" required>
+        <input type="email" id="email" placeholder="email address" required >
         <br>
         <br>
         <label>Password</label>
         <br>
-        <input type="password" id="password" required placeholder="xxxxx">
+        <input type="password" id="password"  placeholder="xxxxx" required>
         <br>
         <br>
+        <label>Date</label>
+        <input type="date" name="date"  id="date"><br><br>
+        <label>Time</label>
+        <input type="time" name="time" id="time"><br><br>
         <input type="submit" id="submit" value="BOOK A CALL" name="submit">
-    </form>
-    <script>
-       
-        const myForm = document.querySelector('#my-form');
-        const enteredName = document.querySelector('#name').value;
-        const enteredEmail = document.querySelector('#email').value;
-        const password = document.querySelector('#password').value;
-
-myForm.addEventListener('submit', onSubmit);
-
-function onSubmit(e){
-       
-        e.preventDefault();
-        const enteredName = document.querySelector('#name').value;
-        const enteredEmail = document.querySelector('#email').value;
-        const password = document.querySelector('#password').value;
-
-
-        console.log(enteredName);
-        console.log(enteredEmail);
-        console.log(password);
-
-        localStorage.setItem('name1', enteredName);
-        localStorage.setItem('Email1', enteredEmail);
-        localStorage.setItem('password1', password);  
-
-
-        let myobj={
-            
-            name2: enteredName,
-            email2: enteredEmail,
-            password2: password,
-        }
-
-        let myobjSerialised = JSON.stringify(myobj);
-        localStorage.setItem('objectsEntered', myobjSerialised);
-        let myobjDeserialised = JSON.parse(localStorage.getItem(myobj))
-        console.log(myobjDeserialised);
-}
-
-        
-
-
-    </script>
+        <br>
+        <br>
+        <ul id="items" class="list-group">
+            <li class="list-group-item">Appointments</li>
+            </ul>
+        </form>
+    <script src="index.js"></script>
 </body>
 </html>
