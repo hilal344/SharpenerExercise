@@ -33,22 +33,45 @@
     <script>
        
         const myForm = document.querySelector('#my-form');
+        const enteredName = document.querySelector('#name').value;
+        const enteredEmail = document.querySelector('#email').value;
+        const password = document.querySelector('#password').value;
 
 myForm.addEventListener('submit', onSubmit);
 
 function onSubmit(e){
-    const enteredName = document.querySelector('#name').value;
+       
+        e.preventDefault();
+        const enteredName = document.querySelector('#name').value;
         const enteredEmail = document.querySelector('#email').value;
         const password = document.querySelector('#password').value;
-        e.preventDefault();
+
+
         console.log(enteredName);
         console.log(enteredEmail);
         console.log(password);
 
         localStorage.setItem('name1', enteredName);
         localStorage.setItem('Email1', enteredEmail);
-        localStorage.setItem('password1', password);   
+        localStorage.setItem('password1', password);  
+
+
+        let myobj={
+            
+            name2: enteredName,
+            email2: enteredEmail,
+            password2: password,
+        }
+
+        let myobjSerialised = JSON.stringify(myobj);
+        localStorage.setItem('objectsEntered', myobjSerialised);
+        let myobjDeserialised = JSON.parse(localStorage.getItem(myobj))
+        console.log(myobjDeserialised);
 }
+
+        
+
+
     </script>
 </body>
 </html>
