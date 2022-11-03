@@ -6,6 +6,7 @@
 
 myForm.addEventListener('submit', onSubmit);
 var itemList = document.getElementById('items');
+itemList.addEventListener('click', removeItem1);
 
 function onSubmit(e){
        
@@ -35,6 +36,10 @@ function onSubmit(e){
         let myobjSerialised = JSON.stringify(myobj);
         localStorage.setItem(myobj.email2, myobjSerialised);
         let myobjDeserialised = JSON.parse(localStorage.getItem(myobj))
+
+        // for(var i=0; i<localStorage.length; i++){
+        //         li.appendChild(document.createTextNode(localStorage.getItem(myobj(i))));
+        // }
 
         var newItem = document.getElementById('name').value;
         var newItem2 = document.getElementById('email').value
@@ -68,4 +73,14 @@ deleteBtn.style="border: 2px solid red;"
   li.appendChild(editbtn);
 }
 
-itemList.style.backgroundColor='white'
+function removeItem1(e){
+        e.preventDefault();
+        if(e.target.classList.contains('delete')){
+                var li = e.target.parentElement;
+                itemList.removeChild(li);
+                localStorage.removeItem(myobj.email2);
+
+        }
+}
+
+itemList.style.backgroundColor='white';
