@@ -21,20 +21,20 @@ class student{
        return(student.count++);     //this is how u access static variable
 
    }
+   
+   minPlacementAge(minAge){
+    return (minMarks) => {
+        if(this.age > minAge && this.marks>minMarks){
+            console.log(this.name+' is ready for the place ment');
+        }
+        else{
+            console.log(this.name+' is not ready for the place ment');
+        }
 
-   eligible(){
+    }
 
-       if(this.marks >=40){
 
-           console.log(`${this.name} age ${this.age} is eligible`);
-
-       }
-
-       else if(this.marks<40){
-
-           console.log(`${this.name} age ${this.age} is not eligible`);
-
-       }
+       
 
    }
 }
@@ -45,18 +45,18 @@ const hilal=new student('hilal',15,2345,55);
 
 const jaffer=new student('jaffer',16,4567,33);
 
-const sayed=new student('sayed',17,7891,17);
+const sayed=new student('sayed',17,7891,60);
 
 const aarzoo=new student('aarzoo',19,3456,70);
 
 console.log(student.countStudent());
 
-abdullah.eligible();
+abdullah.minPlacementAge(16)(40);
 
-hilal.eligible();
+hilal.minPlacementAge(16)(40);
 
-jaffer.eligible();
+jaffer.minPlacementAge(16)(40);
 
-sayed.eligible();
+sayed.minPlacementAge(16)(40);
 
-aarzoo.eligible();
+aarzoo.minPlacementAge(16)(40);
